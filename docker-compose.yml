@@ -5,12 +5,17 @@ services:
     network_mode: bridge
     restart: always
     environment:
-      - MIKROTIK_ROUTER=10.1.1.127
-      - MIKROTIK_USER=admin
-      - MIKROTIK_BACKUP_ENCRYPT=password
-      - MIKROTIK_MAX_BACKUPS=3
-      - TZDATA=Asia/Jakarta
-      - CRON_SCHEDULE=0 0 * * *
+      - MIKROTIK_ROUTER=${MIKROTIK_ROUTER}
+      - MIKROTIK_USER=${MIKROTIK_USER}
+      - MIKROTIK_BACKUP_ENCRYPT=${MIKROTIK_BACKUP_ENCRYPT}
+      - MIKROTIK_SSH_PORT=${MIKROTIK_SSH_PORT}
+      - MIKROTIK_MAX_BACKUPS=${MIKROTIK_MAX_BACKUPS}
+      - TZDATA=${TZDATA}
+      - CRON_SCHEDULE=${CRON_SCHEDULE}
+      - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}
+      - AWS_SECRET_KEY=${AWS_SECRET_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
     volumes:
       - ./backups:/home/backupuser/backups
       - ./id_rsa:/home/backupuser/.ssh/id_rsa:ro
