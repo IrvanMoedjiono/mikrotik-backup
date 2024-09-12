@@ -28,15 +28,6 @@ COPY logrotate.conf /etc/logrotate.d/mikrotik-backup
 COPY mikrotik_backup.sh /home/backupuser/
 RUN chmod +x /home/backupuser/mikrotik_backup.sh
 
-# Set default environment variables
-ENV MIKROTIK_ROUTER=10.1.1.127 \
-    MIKROTIK_USER=admin \
-    MIKROTIK_BACKUP_ENCRYPT=PASSWORD \
-    MIKROTIK_SSH_PORT=22 \
-    MIKROTIK_MAX_BACKUPS=3 \
-    TZDATA=Asia/Jakarta \
-    CRON_SCHEDULE="0 0 * * *"
-
 # Create log file and set permissions
 RUN touch /var/log/mikrotik_backup.log && \
     chmod 0644 /var/log/mikrotik_backup.log && \
